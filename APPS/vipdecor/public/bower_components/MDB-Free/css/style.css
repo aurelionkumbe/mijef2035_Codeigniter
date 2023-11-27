@@ -1,0 +1,90 @@
+/* TEMPLATE STYLES */
+
+html,
+body,
+.view {
+    height: 100%;
+}
+
+
+/* Navigation*/
+
+.navbar {
+    background-color: transparent;
+}
+
+.top-nav-collapse {
+    background-color: #1C2331;
+}
+
+footer.page-footer {
+    background-color: #1C2331;
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar {
+        background-color: #1C2331;
+    }
+}
+
+
+/*Intro*/
+
+.view {
+    background: url("../../../../../../../images/regular/city/img%20%286%29.jpg")no-repeat center center fixed;
+     -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+@media (max-width: 768px) {
+    .full-bg-img,
+    .view {
+        height: auto;
+        position: relative;
+    }
+}
+
+.description {
+    padding-top: 20%;
+    padding-bottom: 3rem;
+    color: #fff
+}
+
+@media (max-width: 992px) {
+    .description {
+        padding-top: 7rem;
+        text-align: center;
+    }
+}
+
+.btn-primary {
+  background: #45526E !important;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #59698d !important;
+}
+
+.btn-primary.active {
+  background-color: #59698d !important;
+}
+
+.btn-default {
+  background: #263238!important;
+}
+
+.btn-default:hover, .btn-default:focus {
+  background-color: #37474F !important;
+}
+
+.btn-default.active {
+  background-color: #37474F !important;
+}
+.carousel-indicators li {
+    background: #45526E!important;
+}
+.list-group .fa-check {
+    color: green;
+}

@@ -1,0 +1,16 @@
+.btn-delete:hover{
+    background-color: red;
+}
+
+.btn-edit:hover{
+    background-color: yellow;
+}
+
+.btn-print:hover{
+    background-color: indigo;
+}
+
+
+tr:hover td{
+    background-color: rgba(104, 164, 196, 0.2);
+}

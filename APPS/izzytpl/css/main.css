@@ -1,0 +1,180 @@
+.header{
+    padding: 4px 0px;
+    z-index: 9999;
+    background: white;
+    width: 100%;
+    /* left: 0px; */
+    box-shadow: 0px 1px 9px -2px black;
+    margin-bottom: 9px;
+}
+
+.logo{
+    width: 97%;
+        margin: 3%;
+}
+
+.edit{
+    border: solid 1px #dc9024;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: -41px;
+    transform: rotate(0deg);
+}
+
+.sel{
+    width: 100%;
+}
+
+.btn{
+    border-radius: 0px !important;
+}
+
+
+.mg{
+    margin: 5%;
+    display: -webkit-inline-box;
+    width: 90%;
+}
+
+.modalbg{
+    position: absolute;
+    left: 36px;
+    top: 106px;
+    background: white;
+    box-shadow: 0px 2px 6px -2px black;
+    width: 27%;
+}
+
+.supprimer{
+    float: right;
+    line-height: 23px !important;
+    margin-right: 3%;
+}
+
+    .color-picker{
+     width: 100%;
+    height: 31px;
+    background-color: azure;
+    border-width: 1px;
+    border-style: solid;
+    border-image: initial;
+    padding: 1px 2px;
+    box-shadow: 0px 2px 4px -2px black;
+}
+
+
+.bg{
+    position: absolute;
+    top: 126px;
+    border-radius: 32px;
+    border: none;
+    color: white;
+    background: black;
+    width: 29px;
+    height: 29px;
+    left: 2px;
+    font-size: 14px;
+}
+
+.bg:hover{
+    font-size: 16px;
+    transition: 0.5s;
+}
+
+.titlepage i{
+    font-size: 17px;
+    float: right;
+    margin: 17px;
+}
+
+.titlepage{
+    background: white;
+    padding: 12px 0%;
+    box-shadow: 0px 2px 5px -3px black;
+}
+
+.modalpage{
+   position: absolute;
+    top: 74px;
+    left: 18%;
+    z-index: 9999;
+    background: #f0f3f5;
+    width: 25%;
+    box-shadow: 0px 3px 11px -2px black;
+}
+
+
+.modalpage ul{
+    padding:0px;
+}
+
+.modalpage ul li{
+    border: solid 1px #f7f7f7;
+    box-shadow: 0px 1px 1px -1px #696060;
+    list-style: none;
+    margin: 19px;
+    padding: 5px;
+    background: white;
+}
+
+#container{
+	margin-top: 20;
+}
+
+iframe{*
+	border: none;
+}
+
+.comp{
+	    width: 24%;
+	    display: -webkit-box;
+}
+
+.comp .list{
+	background: white;
+    box-shadow: 0px 0px 7px -1px black;
+}
+
+.list ul li a{
+    text-decoration: none;
+    color: #999999;
+}
+
+.list ul li{
+	list-style: none;
+}
+
+
+.dropdown-menu{
+	top: -48px !important;
+	left: 159px !important;
+}
+
+.nav li a{
+    border-right: solid 1px #eaeaea;
+    padding: 12px;
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+
+.add{
+	color: black !important;
+    box-shadow: 0px 0px 8px -3px black !important;
+    background: white !important;
+	border-radius: 0px !important;
+}
+
+.background{
+	border-radius: 0 38px 38px 0px !important;
+    margin-top: 50px;
+    margin-left: -12px;
+}
+
+
+.nav li a:hover{
+	background: #007bff;
+    text-decoration: none;
+    color: white !important;
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Izzytpl</title>
+
+
+    <meta charset="utf-8">
+	
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+     <link rel="stylesheet" href="components/sidemenu/_sidemenu.css">
+     <link rel="stylesheet" href="js/text-edit.css">
+     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="device-mockups/device-mockups.min.css">
+
+    <!-- Custom styles for this template -->
+    <link href="css/new-age.min.css" rel="stylesheet">
+</head>
+<body ng-app="izzy" ng-controller="MainCtrl">
+	<div class="header">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-2">
+					<img src="img/logo1.png" class="logo">
+				</div>
+				<div class="col-md-4 form-inline">
+					<div class="col-md-10">
+						<select  ng-model="selected" class="form-control" style="width: 100%;">
+							<option ng-repeat="page in pages" ng-selected=" {{page.nom == selected}} " value="{{page.id}}">{{page.nom}} </option>
+						</select>
+					</div> 
+					<div class="col-md-2">
+						<button class="btn btn-primary" ng-click="modal()"><i class="fa fa-plus"></i>
+						</button>
+					</div> 
+				</div>
+				<div class="navbar" style="margin-left: 41%;">
+					<ul class="nav">
+						<li><a href=""> <i class="fa fa-save"></i></a></li>
+						<li><a href=""><i class="fa fa-download"></i></a></li>
+					</ul> 
+				</div>
+			</div>
+		</div>
+		<div ng-show="isopen" class="modalpage">
+			<h1 class="text-center titlepage" ><strong>Pages </strong><i class="fa fa-times" ng-click="modal()"></i></h1>
+			<ul id="sortable">
+				<li ng-repeat="p in pages "  ><span contenteditable="true">{{p.nom}} </span> <i class="fa fa-trash supprimer" ng-click="delete()"></i></li>
+			</ul>
+			<div class="mg">
+				<div style="width: 85%">
+					<input type="Text" name="" class="form-control" placeholder="Nom de la page" ng-model="newpage">
+				</div>
+				<div style="width: 15%">
+					<button id="btn_add" class=" btn btn-primary" ng-click="addpage()"><i class="fa fa-plus" ></i></button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="comp">
+		<div id="mySidenav" class="sidenav">
+			<h5 class="text-center" style="margin-top: 6px;"><strong>Composants</strong></h5>
+			<a href="">Textes<i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+			<a href="">Images <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+			<a href="">Menu <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+			<a href="">Liste <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+		</div>
+		<div class="menu-icon menu-icon-cross is-closed">
+			<span></span>
+			<svg x="0" y="0" width="33px" height="33px" viewBox="0 0 33 33" >
+				<circle cx="16.5" cy="16.5" r="14"></circle>
+				
+			</svg>
+		</div>
+		<button class="bg" id="bg" ng-click="bgmodal()"><i class="fa fa-pencil"></i></button>
+
+		<div ng-show="isOpen" class="modalbg">
+			<h5 class="text-center titlepage" style="line-height: 50px;"><strong>Paramètres de l'arrière plan </strong><i class="fa fa-times" ng-click="bgmodal()"></i></h5>
+			<div class="mg">
+				<div style="width: 46%">
+					<label>Couleur de l'arrière</label>
+				</div>
+				<div style="width: 50%">
+					<input type="color" class="color-picker"  ng-model="newpage">
+				</div>
+			</div>
+			<div class="mg">
+				<div style="width: 85%">
+					<input type="file" name="" class="form-control" placeholder="Nom de la page" ng-model="newpage">
+				</div>
+				
+			</div>
+			<div class="mg">
+				<div style="width: 15%">
+					<button class=" btn btn-primary" ng-click="apply()">Valider	</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<iframe src="templates/SPA/home.html" width="100%" height="100%" id="workzone" id="droppable">
+		
+	</iframe>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    
+    <script src="js/jquery-ui.js"></script>
+    <script src="vendor/popper/popper.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/new-age.min.js"></script>
+
+    <!-- Angularjs module -->
+    <script src="vendor/angular/angular.min.js"></script>
+    <script src="vendor/angular/angular-route.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/controller.js"></script>
+
+    <script src="js/main.js"></script>
+    <script src="components/sidemenu/js/sidemenu.js"></script>
+    <script src="dist/summernote.js"></script>
+</body>
+</html>

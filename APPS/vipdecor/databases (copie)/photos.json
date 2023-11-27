@@ -1,0 +1,38 @@
+[
+  {
+    "src":"/photos/album/1.jpg",
+    "desc":"",
+    "groupe":"tableau d'honneur",
+    "categorie":"interieur"
+  },
+  {
+      "src":"/photos/album/11.jpg",
+      "desc":"",
+      "groupe":"tableau d'honneur",
+      "categorie":"interieur"
+  },
+  {
+    "src":"/photos/album/12.jpg",
+    "desc":"",
+    "groupe":"tableau d'invite",
+    "categorie":"interieur"
+  },
+  {
+      "src":"/photos/album/2.jpg",
+      "desc":"",
+      "groupe":"tableau d'invite",
+      "categorie":"interieur"
+  },
+  {
+      "src":"/photos/album/3.jpg",
+      "desc":"exterieur",
+      "groupe":"tableau d'honneur",
+      "categorie":"exterieur"
+  },
+  {
+      "src":"/photos/album/4.jpg",
+      "desc":"exterieur",
+      "groupe":"tableau d'honneur",
+      "categorie":"exterieur"
+  }
+]

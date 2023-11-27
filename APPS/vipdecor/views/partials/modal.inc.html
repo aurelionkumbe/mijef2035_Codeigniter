@@ -1,0 +1,45 @@
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">GRILLE DES PRIX <br><small>Pour 24h de location par piece</small></h4>
+      </div>
+      <div class="modal-body">
+        <ul class="list-group">
+            <li class=""><form action="form form-inline">
+                <div class="form-group" ng-if="isAdminLoggedIn">
+                    <input type="text" class="form-control" placeholder="Nouveau prix">
+                    <button type="btn btn-primary btn-small" class="btnpull-rigth" ng-click name="button">Ajouter</button>
+                </div>
+            </form></li>
+          <li class="list-group-item">Un couvert complet a <b>300</b> <abbr title="francs cfa">fcfa</abbr>
+            <br><small>Une assiete, une fourchette, un couteau, verre a eau, verre a vin par couvert</small>
+            <span title="supprimer" class="pull-right"><b>x</b></span>
+          </li>
+          <li class="list-group-item">Une chaise a <b>100</b> <abbr title="francs cfa">fcfa</abbr></li>
+          <li class="list-group-item">Une table a <b>1.000</b> <abbr title="francs cfa">fcfa</abbr></li>
+          <li class="list-group-item">100 assietes cassables a <b>10.000</b> <abbr title="francs cfa">fcfa</abbr></li>
+          <li class="list-group-item">100 assietes plastiques a <b>5.000</b> <abbr title="francs cfa">fcfa</abbr></li>
+          <li class="list-group-item">100 couteaux a <b>5.000</b> <abbr title="francs cfa">fcfa</abbr></li>
+          <li class="list-group-item">100 fourchettes a <b>3.000</b> <abbr title="francs cfa">fcfa</abbr></li>
+          <li class="list-group-item">100 verres a eau a <b>10.000</b> <abbr title="francs cfa">fcfa</abbr></li>
+          <li class="list-group-item">100 verres a vin a <b>10.000</b> <abbr title="francs cfa">fcfa</abbr></li>
+          <li class="list-group-item">100 mouchoirs plies a <b>5.000</b> <abbr title="francs cfa">fcfa</abbr></li>
+          <li class="list-group-item">une housse simple<b>250</b> <abbr title="francs cfa">fcfa</abbr></li>
+          <li class="list-group-item">une housse slim<b>300</b> <abbr title="francs cfa">fcfa</abbr></li>
+          <li class="list-group-item">une attache pour chaise a <b>100</b> <abbr title="francs cfa">fcfa</abbr></li>
+          <li class="list-group-item">un jupon pour buffet a <b>1.500</b> <abbr title="francs cfa">fcfa</abbr></li>
+          <li class="list-group-item">un marmite chauffante a <b>2.000</b> <abbr title="francs cfa">fcfa</abbr></li>
+          <li class="list-group-item">une nappe de table a <b>1.000</b> <abbr title="francs cfa">fcfa</abbr></li>
+          <li class="list-group-item">une tente a <b>13.000</b> <abbr title="francs cfa">fcfa</abbr></li>
+          <li class="list-group-item">un chapiteau a <b>15.000</b> <abbr title="francs cfa">fcfa</abbr></li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>

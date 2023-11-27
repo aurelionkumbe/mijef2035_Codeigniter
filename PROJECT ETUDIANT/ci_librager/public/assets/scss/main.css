@@ -1,0 +1,126 @@
+body {
+  background-color: #fff; }
+
+.text-edit p {
+  font-size: 12px;
+  width: 100%;
+  padding: 14px !important;
+  border-radius: 4px; }
+.text-edit .jqte {
+  max-height: 600px;
+  margin: 4px 0 !important; }
+
+.form-signin {
+  max-width: 330px;
+  margin: 0 auto;
+  padding: 15px; }
+
+.lead {
+  border-bottom: 3px solid #60a917; }
+
+.upload input {
+  display: none !important; }
+.upload label {
+  width: 100%;
+  margin: 2px;
+  padding: 40px;
+  text-align: center;
+  color: #444;
+  border: 2px dashed #ababab;
+  background-color: green; }
+
+#flashAlert {
+  position: fixed;
+  z-index: 9999;
+  top: 5px;
+  right: 20px;
+  width: 20%;
+  min-width: 400px;
+  margin: auto;
+  padding: 20px;
+  opacity: .9; }
+
+.form-inline {
+  display: inline; }
+
+/*
+effect de survole, affiche et masque les details d un details d un livre
+------------------------------------------------------------------------
+ */
+.book-tile {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+  min-height: 100px;
+  padding: 30px 0;
+  text-align: center; }
+  .book-tile a {
+    color: gold; }
+  .book-tile .detail {
+    display: none; }
+
+.book-tile .detail,
+.book-tile .titre {
+  position: absolute;
+  width: 100%; }
+
+/*
+bouton de connexion de la admin au coin superieur droit de la page de acceuil
+-----------------------------------------------------------------------------
+ */
+#btn-admin-login {
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+  right: 0;
+  width: auto;
+  height: auto; }
+
+#btn-admin-login a {
+  font-size: 2px;
+  position: relative;
+  top: -4px;
+  right: -4px;
+  display: block;
+  width: 4px;
+  height: 4px;
+  padding: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #222;
+  border-radius: 12px;
+  background-color: transparent; }
+
+#btn-admin-login:hover a {
+  background-color: #fff;
+  box-shadow: 0 0 30px 20px #fff; }
+
+/*
+tableau de la page de l'adminstrateur
+-------------------------------------
+ */
+.table-hover tbody tr:hover td {
+  cursor: pointer;
+  background-color: #d3ebff !important; }
+
+/*
+style de bare de nav hor de l admin
+-----------------------------------
+ */
+#admin-nav li a {
+  font-size: larger;
+  text-align: center; }
+
+#admin-nav li a button {
+  margin: 0 20px;
+  padding: 0 4px; }
+
+#addPersonForm legend {
+  background-color: black; }
+#addPersonForm .col-md-6, #addPersonForm .col-md-3, #addPersonForm .col-md-4 {
+  padding-left: 3px;
+  padding-right: 3px; }
+#addPersonForm .row {
+  margin: 6px; }
+
+/*# sourceMappingURL=main.css.map */

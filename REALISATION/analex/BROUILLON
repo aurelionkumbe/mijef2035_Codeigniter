@@ -1,0 +1,9 @@
+
+%{
+    /*
+    int yywrap () {
+        printf ("%7d %7d %7d\n", lig, nb_mot, car);
+        return 1;
+    }
+    */
+%}

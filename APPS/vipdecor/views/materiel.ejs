@@ -1,0 +1,80 @@
+<style media="screen">
+.fashion-left > img{
+
+}
+.fashion-right img{
+
+}
+</style>
+<!-- banner -->
+<div class="banner-1">
+
+</div>
+<!-- banner -->
+<!-- fashion -->
+<div class="fashion">
+	<div class="container">
+		<!-- 1 -->
+		<div ng-repeat="mat in matos">
+		<h3>{{mat.titre}}</h3>
+		<div class="col-md-4 fashion-left">
+			<img ng-src="{{mat.photo}}" class="img-responsive" alt="[*]">
+		</div>
+		<div class="col-md-8 fashion-right">
+			<h5>{{mat.sousTitre}}</h5>
+			<p ng-bind-html="mat.desc"></p>
+			<li ng-repeat="tof in mat.thumbnails"><a href="#"><img ng-src="{{tof}}" class="img-responsive" alt=""></a></li>
+		</div>
+		<div class="clearfix"></div><br>
+		</div>
+		<!-- 1-->
+
+		<div class="guide">
+			<h3>Nos recentes decorations</h3>
+			<div ng-repeat="deco in decos" class="col-md-6 guide-left">
+				<div class="gu-lf">
+					<div class="flexslider">
+						<ul class="slides">
+							<li ng-repeat="slide in _.concat(deco.thumbnails, deco.src)">
+								<img ng-src="{{slide}}" class="img-responsive" alt="">
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="gu-rt">
+					<h5>{{deco.nom}}</h5>
+					<p>{{deco.desc}}</p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+let src = $('.fashion-left img').attr('src');
+$('.fashion-right li img').hover(function () {
+	$img = $(this);
+	$('.fashion-left').find('img').attr('src', $img.attr('src'));
+}, function () {
+	// hover out
+	$('.fashion-left img').attr('src', src);
+})
+</script>
+<!-- fashion -->
+<!-- FlexSlider -->
+<script defer="" src="js/jquery.flexslider.js"></script>
+<script type="text/javascript">
+$(function(){
+
+});
+$(window).load(function(){
+	$('.flexslider').flexslider({
+		animation: "slide",
+		start: function(slider){
+			$('body').removeClass('loading');
+			$('.flex-control-nav ').hide();
+		}
+	});
+});
+</script>
+<!-- FlexSlider -->

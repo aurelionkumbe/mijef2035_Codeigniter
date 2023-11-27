@@ -1,0 +1,24 @@
+<div class="col-md-11 div-center container" style="margin-bottom: 20px;">
+
+    <div class="col-md-3 " style="min-height: 400px">
+        <div class="panel panel-default " ng-repeat="document in documents">
+            <div class="panel-heading w3-text-white bg_green" >{{document.name}}</div>
+            <div class="w3-padding-0">
+                <div class="panel-body w3-padding"  ng-click="pdfReader(pdf.source)" ng-repeat="pdf in document.pdfs | orderBy: '+name'">
+                    <a class="">{{pdf.name}} </a>
+                    <a href="documents/{{pdf.source}}" title="Telecharger" target="frame" class="pull-right"><span class=" fa fa-download"></span></a></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-9 ">
+        <div class="w3-paddind w3-container w3-red w3-center" style="background-color: #CD040A">
+        <span style="color: white; position: absolute; top: 8px; left: 22px" class="fa fa-file fa-1x"></span>
+        <span style="color: yellow; position: absolute; top: 8px; right: 22px" class="fa fa-download fa-1x"></span>
+        &nbsp;<br>&nbsp;</div>
+        <iframe id="frame" src="{{documentLink}}" style="width: 100%; height: 600px" align="middle"></iframe>
+
+    </div>
+
+
+</div>

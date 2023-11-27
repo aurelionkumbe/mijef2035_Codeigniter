@@ -1,0 +1,34 @@
+[
+{
+  "titre":"Tentes et chapitaux",
+  "sousTitre":"Tentes et chapitaux",
+  "photo":"/images/19.jpg",
+  "desc":"<p>Pour restez a l'abri de la pluie et d'un soleil intance. disponible en<br></p><div>20 places, 50 places ,70 places</div>",
+  "created":"2014-12-12",
+  "thumbnails": ["/images/3.jpg","/images/4.jpg","/images/6.jpg","/images/9.jpg","/images/12.jpg"]
+},
+{
+  "titre":"Chaises et tables",
+  "sousTitre":"Chaises et tables",
+  "photo":"/images/8.jpg",
+  "desc":"Pour accompagner votre etat d'esprit avec votre confort.",
+  "created":"2014-12-12",
+  "thumbnails": ["/images/3.jpg","/images/4.jpg","/images/6.jpg","/images/9.jpg","/images/12.jpg"]
+},
+  {
+    "titre":"Couverts",
+    "sousTitre":"Couverts",
+    "photo":"/images/4.jpg",
+    "desc":"Pour manger dans l'art et l'elegance d'un grand degustateur,<br> un couvert est constitue de : une fourchette, un couteau, un plat, un verre d'eau, un verre de vin, un verre de wisky",
+    "created":"2014-12-12",
+    "thumbnails": ["/images/3.jpg","/images/4.jpg","/images/6.jpg","/images/9.jpg","/images/12.jpg"]
+  },
+    {
+      "titre":"Marmites chauffantes ",
+      "sousTitre":"Marmites chauffantes ",
+      "photo":"/images/4.jpg",
+      "desc":"Pour preserver le gout et la chaleur de votre buffet le plus longtemps possible.<br>Il y'a des marmites chauffantes a 1 compartiment, 2 compartiments et 3 compartiments.",
+      "created":"2014-12-12",
+      "thumbnails": ["/images/3.jpg","/images/4.jpg","/images/6.jpg","/images/9.jpg","/images/12.jpg"]
+    }
+]

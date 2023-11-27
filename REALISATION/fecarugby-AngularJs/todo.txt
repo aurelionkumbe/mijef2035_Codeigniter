@@ -1,0 +1,3 @@
+//TODO liST
+
+-- on doit recuperer les recontre  de la semaine en verifiant la date par rapport a la date du jour qui doit etre inferieur ou egale a la date de recontre avenir a affiche sur la page

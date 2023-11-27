@@ -1,0 +1,293 @@
+.ion-navicon{
+    color: aquamarine !important;
+}
+
+ion-header-bar{
+    color: white !important;
+    background: #1d1d1b !important; 
+    border-color: #1d1d1b !important;
+}
+
+ion-header-bar .title{
+    color: aquamarine !important;
+}
+
+ion-content.body{
+    margin-top: -15px !important;
+}
+ion-side-menu{
+    border-right: 8px solid rgba(255, 255, 255, .5);
+    
+    background: url('../images/photo-3.jpg') !important; 
+
+}
+ion-side-menu ion-item a, ion-side-menu .item{
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: white;
+}
+ion-view{
+    background-color: grey !important;
+    border-left : 3px solid aquamarine;
+    border-right : 3px solid aquamarine;
+
+}
+
+#dat-menu > div > div.dat-menu-wrapper.dat-menu-padding > a{
+    display: none !important;
+}
+
+#page-indicator{
+    background-color: blue;
+}
+.divider-hor{
+    background-color: black; position: relative ; padding: 0px; height: 4px;
+    width: 100%;
+    margin : 0; padding : 0;
+    float: left;
+}
+.divider2-hor{
+    background-color: #333; position: relative ; padding: 0px; height: 4px;
+    width: 100%;
+    margin : 0; padding : 0;
+    float: left;
+}
+.ul-menu{
+    background-color: rgba(0,0,95, 0.9); !important;
+    width: 200px;
+    height: 500px; !important;
+    border-bottom: 2px solid aquamarine !important;
+    overflow-y: scroll !important;
+    position: relative;
+
+}
+.ul-menu a{
+    color: white !important;
+}
+.ul-menu li:hover a{
+    background-color: rgba(127, 255, 186, .9) !important;
+    font-weight: 600;
+    cursor: pointer;
+    word-wrap: normal;
+}
+
+
+ion-content header{
+    border-bottom : 4px solid black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+img{
+    height: 100%;
+    width: 100%;
+    display: block;
+
+}
+
+
+.fa{
+ background: none;
+ margin-left: 10px; 
+ border-color: #030;
+ color: white;
+
+}
+.fa-facebook-square{
+    color: #006699
+}
+.fa-twitter-square{
+    color: #00b3ee
+} 
+.fa-linkedin-square{
+    color: captiontext
+}
+.center{
+    text-align: center
+}
+.right{
+    text-align: right;
+}
+.left{
+    text-align: left;
+}
+.text-green{
+    color: #030
+}
+.V_aligne{
+    vertical-align: central
+}
+.div-center{
+    margin: auto;
+
+}
+.div-left{
+    float: left
+}
+.div-right{
+    float: right
+}
+.clearfix{
+    height: 5px;
+}
+select:focus, select option :hover, select option:focus{
+    border-color: #f9b234;
+}
+.social{
+    color: white;
+    background: #1d1d1b
+}
+
+.pub{
+    background: #1c1c1a;
+    padding: 0px
+}
+.menus{
+    background: #1c1c1a;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding: 2px 2px 2px 2px
+}
+.prog{ 
+    height: 100%;
+    padding: 0%
+}
+.btn_langue button{
+    border: none;
+    margin-right: 1px;
+    background: #0d060d;
+    border-radius: 20%;
+    text-align: center
+    
+}
+.progImage{
+    padding: 0px;
+    height: 70%;
+    background: #a12621
+}
+.progTitle{
+
+    color: #e35503
+}
+#navbar{
+    position: absolute;
+    left: 15%;
+    z-index: 9000;
+    top: 75%;
+    width: 70%;
+    background: rgba(240, 240, 240, 0.8);
+}
+#navbar li a{
+    color: #000;
+    padding: 2px 3px;
+    text-decoration: none;
+}
+.pub_ass{
+    height: 50px;
+    padding: 0px;
+}
+.baniere{
+    height: 50px;
+    padding-top: 2%;
+    padding-bottom: 3%;
+    background: white;
+}
+.live{
+    height: 35%; 
+    background: grey;
+    padding: 0px;
+    background: url(../../images/bg_live_prog.jpg) no-repeat center ;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+.live .col-lg-8{
+
+}
+.rubrique{
+    height: 100px;
+    padding: 0.5%;
+    margin: 3% 0 3% 0;
+    background: none;
+    border: none
+    
+}
+
+.rubrique2{
+    height: 10%;
+    font-size: 15px
+}
+.rubrique2 div div p{ 
+    padding-top: 3%;
+    padding-bottom: 2%
+
+}
+@media (min-width: 768px) {
+
+    .navbar-toggle {
+        display: block;
+    }
+    #navbar{
+        left: 6%
+    }
+    .live{
+        height: 70%
+    }
+    .rubrique{
+        height: 200px
+    }
+    .rubrique2{
+       height: 20%
+   }
+   .pub_ass{
+    height: 70px;
+}
+.baniere{
+    height: 70px;
+}
+
+}
+@media (min-width: 992px) {
+    .navbar-toggle {
+        display: block;
+    }
+    #navbar{
+        left: 4%
+    }
+    .live{
+        height: 70%
+    }
+    .rubrique{
+        height: 220px
+    }
+    .rubrique2{
+       height: 25%
+   }
+   .pub_ass{
+    height: 80px;
+}
+.baniere{
+    height: 80px;
+}
+}

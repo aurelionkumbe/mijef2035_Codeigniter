@@ -1,0 +1,40 @@
+
+<!-- banner -->
+	<div class="banner-1">
+
+	</div>
+<!-- banner -->
+<!-- login-page -->
+	<div id="login-page" class="login">
+	<div class="container">
+		<div class="login-grids">
+			<div class="col-md-6 log">
+					 <h3>Connexion au tableau de bord</h3>
+					 <form id="login-form" name="loginForm">
+						 <h5>Nom d'utilisateur:</h5>
+						 <input type="text" value="" name="login" ng-model="auth.login" minlength ="5" maxlength ="50" required="">
+						 <div ng-messages="loginForm.login.$error" style="color:maroon" role="alert">
+							 <div ng-message="required">ce champ est requis</div>
+ 							<div ng-message="minlength">ce champ est trop court</div>
+ 							<div ng-message="maxlength">ce champ est trop long</div>
+						</div>
+						 <h5>Mot de passe:</h5>
+						 <input type="password" value="" name="passwd" ng-model="auth.passwd"  minlength="5" maxlength ="50"  required="">
+						 <div ng-messages="loginForm.passwd.$error" style="color:maroon" role="alert">
+							<div ng-message="required">ce champ est requis</div>
+							<div ng-message="minlength">ce champ est trop court</div>
+							<div ng-message="maxlength">ce champ est trop long</div>
+						</div>
+						 <input type="button" class="btn btn-submit" style="width:auto" ng-click="connect()" value="Connexion">
+					 </form>
+			</div>
+			<div class="col-md-6 hide login-right">
+					<h3>New Registration</h3>
+					<p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+					<a href="register.html" class="hvr-bounce-to-bottom button">Create An Account</a>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	</div>
+<!-- //login-page -->

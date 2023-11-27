@@ -1,0 +1,118 @@
+<style>
+	.deco:hover{
+		cursor: pointer;
+		outline: 1px solid #20C157;
+	}
+	.deco:hover .btn-delete,.deco:hover .btn-update,.thumbnail:hover .btn-delete,.thumbnail:hover .btn-update{
+		display: block;
+	}
+	.deco-src{
+
+	}
+
+	.btn-delete{
+	    position: absolute; top:1em; right: 1em; cursor:pointer; font-size: 1em; color: red;
+		display: none;
+	}
+	.btn-update{
+	    position: absolute; top:1em; right: 2.2em; cursor:pointer; font-size: 1em; color: blue;
+		display: none;
+	}
+	.deco-desc{
+		background-color: #ceffde;
+	}
+	.deco-thumbnail{
+		height: 144px;
+		width: 168px;
+	}
+</style>
+<!-- banner -->
+	<div class="banner-1">
+
+	</div>
+<!-- banner -->
+<!-- style -->
+	<div class="style">
+		<div class="container">
+			<div class="admin-block" ng-if="isAdminLoggedIn">
+				<form class="form-inline" action="index.html" method="post">
+					<fieldset  >
+							<legend>Ajouter une decoration</legend>
+					<div class="form-group well well-sm">
+						<input type="text" class="form-control" name="src"  ng-model="newDeco.src" value="" placeholder="Url de l'image de presentation" style="min-width: 240px !important">
+						<textarea class="form-control" name="desc" ng-model="newDeco.desc" rows="1" cols="70"></textarea>
+						<input type="button" name="name" value="OK" class="btn-master btn" ng-click="adddeco()">
+					</div>
+				</fieldset>
+				</form>
+				<br>
+			</div>
+			<div class="col-md-8 Style-left">
+				<h3>Nos meilleures decorations</h3>
+				<div class="st-top deco" ng-repeat="photo in decorations.photos" ng-click="decorations.changeThumbnails(photo)" style="position:relative">
+					<span ng-if="isAdminLoggedIn" ng-click="decorations.update(photo)"
+						class="pull-right btn-update" title="modifié"><b>U</b></span>
+					<span ng-if="isAdminLoggedIn" ng-click="decorations.remove(photo)"
+						class="pull-right btn-delete" title="supprimé" style=""><b><i class="fa fa-trash"></i></b></span>
+					<div class="st-lf">
+						<img  ng-src="{{photo.src}}"  class="img-responsive deco-src" alt="[*]">
+					</div>
+					<div class="st-rt deco-desc">
+					<h6>{{photo.date}}</h6>
+					<p>{{photo.desc}}</p>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+			<div class="col-md-4 Style-right">
+				<h3>Dernieres photos</h3>
+
+				<form class="form-inline admin-block" action="index.html" method="post" ng-if="isAdminLoggedIn">
+					<fieldset  >
+						<legend>Ajouter une photo a une decoration</legend>
+					<div class="form-group well well-sm">
+						<input type="text" class="form-control" name="src"  ng-model="newThumb.src" value="" placeholder="Url de la photo">
+						<input type="button" name="name" value="OK" class="btn-master btn" ng-click="decorations.addThumbnail()">
+					</div>
+				</fieldset>
+				</form>
+				<br>
+				<ul>
+					<li class="thumbnail" ng-repeat="thumbnail in decoration.thumbnails" style="position: relative">
+						<span ng-if="isAdminLoggedIn" ng-click="decorations.updateThumb(thumbnail)"
+							class="pull-right btn-update" title="modifié"><b>U</b></span>
+						<span ng-if="isAdminLoggedIn" ng-click="decorations.removeThumb(thumbnail)"
+							class="pull-right btn-delete" title="supprimé"><b><i class="fa fa-trash"></i></b></span>
+						<img ng-src="{{thumbnail}}" class="img-responsive deco-thumbnail" alt="thumbnail"></li>
+						</ul>
+			</div>
+			<div class="clearfix"></div>
+			<!--
+			<div class="guide">
+				<h3>Nos recentes decorations</h3>
+				<div class="col-md-6 guide-left">
+					<div class="gu-lf">
+						<img src="images/17.jpg" class="img-responsive" alt="">
+					</div>
+					<div class="gu-rt">
+						<h5>consectetuer adipiscing elit. Praesent vestibulum</h5>
+						<p>Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here.</p>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="col-md-6 guide-left">
+					<div class="gu-lf">
+						<img src="images/18.jpg" class="img-responsive" alt="">
+					</div>
+					<div class="gu-rt">
+						<h5>consectetuer adipiscing elit. Praesent vestibulum</h5>
+						<p>Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here.</p>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		-->
+		</div>
+	</div>
+<!-- style -->

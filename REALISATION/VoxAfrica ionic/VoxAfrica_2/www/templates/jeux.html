@@ -1,0 +1,44 @@
+<ion-view view-title="VoxAfrica">
+<ion-content scroll="false"  class="body" style="background-color: #ff9d00">
+<header style="margin-top: 10px; z-index: 19; width: 100%; position: absolute;" class="">
+  <div class="w3-row social">
+    <div class="w3-left" style="width: auto;!important">
+      <div class="w3-row">
+        <button id="page-indicator" ng-click="showMenu('menuJeu')" class="w3-col text-center white w3-small" style="padding: 5px; top: 0; transform: skew(-15deg, 0deg); margin-left: 5px"><div style="transform: skew(15deg, 0deg)">Jeux <span class="caret"></span></div> 
+        </button>
+        <div class="size10 btn_langue white bold w3-padding-4" style="position: absolute; right: 150px">&nbsp;
+          <button style="">FR</button><button>EN</button></div>
+        </div>
+      </div>
+      <div class="w3-right text-right" style=" width: auto; padding-right: 8px;">
+        <a href="#" class="fa fa-vimeo-square " ></a> 
+        <a href="#" class="fa fa-facebook-official "></a> 
+        <a href="" class="fa fa-twitter "></a> 
+        <a href="" class="fa fa-google-plus "></a>
+        <a href="" class="fa fa-youtube "></a>
+      </div>
+    </div>
+    <div class="w3-row">
+      <div class="w3-row"> 
+        <ul id="menuJeu" hidden="" class="ul-menu w3-card-24 w3-navbar w3-padding-0">
+          <li ng-repeat="p in menu.jeux" class="active col-sm-12">
+            <a ng-click="changeFrameUrl(p.src)" style="text-shadow: orange !important; line-height: 1; text-align: justify" class="size13 ">{{p.nom}}.</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+  </ion-content>
+  <ion-content class="" class="body">
+  <div class="pub col-xs-12" style="margin-top: 25px;">
+    <div class="col-xs-4 col-sm-3 col-md-3 padding0 baniere" >
+      <img src="images/VOX LOGO.png" alt="Vox" style="height: 100%; width:100%; display: block"/>
+    </div>
+    <div class="col-xs-8 col-sm-9 col-md-9 padding0 pub_ass">
+      <img src="images/banniere_assur.png" alt="Vox"/>
+    </div>
+  </div>
+  <div class="divider2-hor" ></div>
+
+  <iframe  scroll="false" class="" width='100%' class='left' height='100%' ng-src='{{ frameUrl }}' frameborder='0' allowfullscreen autoplay="true" controls></iframe>
+</ion-content>
+</ion-view>

@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,MAAM;EACL,MAAM,EAAC,cAAc",
+"sources": ["_text-edit.scss"],
+"names": [],
+"file": "text-edit.css"
+}

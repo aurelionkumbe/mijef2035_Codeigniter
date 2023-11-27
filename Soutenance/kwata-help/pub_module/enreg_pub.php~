@@ -1,0 +1,99 @@
+<?php 
+	require_once('../sbadmin/aut/bdconnect.php');
+
+	if($_POST['send'] == 'hiden'){
+		if(!empty($_POST['ville']) && !empty($_POST['kwata']) && !empty($_POST['secto']) && !empty($_POST['job']) && !empty($_POST['date1']) && !empty($_POST['date2'])){
+			if(!empty($_FILES['file-input']) AND $_FILES['file-input']['error'] == 0){
+				if ($_FILES['file-input']['size'] <= 6500000){
+					/*add_filter('wp_handle_upload_prefilter','tc_handle_upload_prefilter');*/
+					if (filter($_FILES['file-input'])){
+						$infosfichier = pathinfo($_FILES['file-input']['name']);
+						$extension_upload = $infosfichier['extension'];
+						$extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
+						if (in_array($extension_upload, $extensions_autorisees)){
+							$dat = date('mYHis');
+
+							$nm = 'pub'.$dat.'.'.$extension_upload;
+							$lieu = "image/{$nm}";
+							$resultat = move_uploaded_file($_FILES['file-input']['tmp_name'], $lieu);
+							if ($resultat){
+								$photo=$nm;
+							}
+
+							$query = $bdd->prepare('SELECT * FROM kh_city WHERE nom_city = ?');
+							$query->execute(array($_POST['ville']));
+							$rep = $query->fetchAll();
+							foreach ($rep as $reponse) {
+								$city = $reponse['id_city'];
+							}
+
+							$query = $bdd->prepare('SELECT * FROM kh_kwata WHERE nom_kwata = ?');
+							$query->execute(array($_POST['kwata']));
+							$rep = $query->fetchAll();
+							foreach ($rep as $reponse) {
+								$kwata = $reponse['id_kwata'];
+							}
+
+							$query = $bdd->prepare('SELECT * FROM kh_secto WHERE nom_secto = ?');
+							$query->execute(array($_POST['secto']));
+							$rep = $query->fetchAll();
+							foreach ($rep as $reponse) {
+								$secto = $reponse['id_secto'];
+							}
+
+							$query = $bdd->prepare('SELECT * FROM kh_metier WHERE nom_metier = ?');
+							$query->execute(array($_POST['job']));
+							$rep = $query->fetchAll();
+							foreach ($rep as $reponse) {
+								$job = $reponse['id_metier'];
+							}
+
+							$audi = split(' ', $_POST['budget'])[0];
+							$date1 = $_POST['date1'];
+							$date2 = $_POST['date2'];
+							
+							if(!empty($_POST['text'])){
+								$req = $bdd ->prepare('INSERT INTO kh_pub (text_pub, img_pub, id_kh_ville_fk, id_kh_kwata_fk, id_kh_secto_fk, id_kh_metier_fk, prix, date_deb, date_fin, audience) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+								if($req ->execute(array($_POST['text'], $photo, $city, $kwata, $secto, $job, $audi*10, $date1, $date2, $audi))){
+									//header('Location:index.php');
+								}
+							}else{
+								$req = $bdd->prepare('INSERT INTO kh_pub (img_pub, id_kh_ville_fk, id_kh_kwata_fk, id_kh_secto_fk, id_kh_metier_fk, prix, date_deb, date_fin, audience) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');
+								if($req->execute(array($photo, $city, $kwata, $secto, $job, $audi*10, $date1, $date2, $audi))){
+									//header('Location:index.php');
+								}
+							}
+						}
+					}else{
+						echo '<div class="alert alert-warning alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></button><strong>Warning!</strong> Choisissez une image de 640*480 ou 2000*2000</div>';
+					}
+				}					
+			}else{
+				echo "error3";
+			}
+		}else{
+			echo "error2";
+		}		
+	}else{
+		echo "error1";
+	}
+
+	function filter($file){
+
+	    $img=getimagesize($file['tmp_name']);
+	    $minimum = array('width' => '640', 'height' => '480');
+	    $maximum = array('width' => '2000', 'height' => '2000');
+	    $width= $img[0];
+	    $height =$img[1];
+
+	    if ($width > $minimum['width'] && $width < $maximum['width']){
+	        if ($height > $minimum['height'] && $height < $maximum['height']){
+		        return true;
+		    }else{
+		    	return false;
+		    }
+	    }else{
+	    	return false;
+	    }	    
+	}	
+?>

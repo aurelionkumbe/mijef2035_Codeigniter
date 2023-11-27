@@ -1,0 +1,100 @@
+         <p id="top">&nbsp;</p>
+        <div class="col-md-11 div-center " style=" margin-bottom: 50px">
+            <h3 class="row w3-center w3-red w3-padding">Les Dirigeants</h3>  
+            <div class="row">
+                <form class="form form-inline" style="margin-left: 40%; width: 40%">
+                    <div class="form-group">
+                        <input class="form-control" placeholder="rechercher" style="text-align: center;" ng-model="rechercherDirigeant"></input>
+                        <button hidden class="btn btn-default" type="submit"><span class="fa fa-search"></span></button>
+                    </div>
+                </form>
+            </div>
+            <p >&nbsp;</p>
+            <div class="row " id="diridgeants" >
+                <div style="height: 401px; width: 100%; overflow-x: scroll;overflow-y: hidden;">
+                    <p class="animate-repeat w3-center" ng-if="results.length == 0">
+                        <br><br><br>
+                        <strong>No results found...</strong><br>
+                        <img class="w3-centered" src="img/not_found.png" style="height: 100px !important; width: auto; margin: auto;">
+                    </p>
+                    <div class="dirigeant btn col-md-3 " style="height: 400px;" ng-repeat="boss in dirigeants | filter:rechercherDirigeant as results" ng-click="getBossDetail(boss.id)">
+                        <div class="col-md-12 w3-card-8" style="height: 400px;">
+                            <div class="col-md-12" style="border: 4px #cc050a solid; padding: 0; height: 250px">
+                                <img class="img-responsive" src="photos/{{boss.photo}}" alt="avatar" / style="max-height: 200px; width: 100%;">
+                            </div>
+                            <div class="titre col-md-12" style="color: #000000; ">
+                                <div class="col-md-11 div-center" style="background: #faee4c; text-align: center; padding-top: 2px; padding-bottom: 2px">
+                                    {{boss.poste.nom_p}}
+                                <br>
+                                </div>
+                            </div>
+                            <div class="col-md-12 size20 text-center" style=""> {{boss.nom}} {{boss.prenom}}</div>
+                        </div>
+                         
+                    </div>
+                    <!--
+                    <div class="dirigeant btn col-md-3 " style="height: 400px;">
+                        <div class="col-md-12 w3-card-8" style="height: 400px;">
+                            <div class="col-md-12" style="border: 4px #cc050a solid; padding: 0; height: 250px">
+                                <img class="img-responsive" src="images/1er Vice Président Fecarugby- Jacques Ngonsu Tchonlahui            696 60 77 76- 674 42 66 60.jpg" alt="" / style="max-height: 200px; width: 100%;">
+                            </div>
+                            <div class="titre col-md-12" style="color: #000000; ">
+                                <div class="col-md-11 div-center" style="background: #faee4c; text-align: center; padding-top: 2px; padding-bottom: 2px">
+                                    P1er Vice Président 
+                                </div>
+                            </div>
+                        <div class="col-md-12 size20 text-center" style=""> Jacques Ngonsu Tchonlahui</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 " style="height: 400px;">
+                        <div class="col-md-12 w3-card-8" style="height: 400px;">
+                            <div class="col-md-12" style="border: 4px #cc050a solid; padding: 0; height: 250px">
+                                <img class="" src="images/Secretaire General Fecarugby - Alfred Daniel Bisso                                   670 91 56 06.jpg" alt="" / style="max-height: 200px; width: 100%;">
+                            </div>
+                            <div class="titre col-md-12" style="color: #000000; ">
+                                <div class="col-md-11 div-center" style="background: #faee4c; text-align: center; padding-top: 2px; padding-bottom: 2px">
+                                    Secretaire General 
+                                </div>
+                            </div>
+                        <div class="col-md-12 size20 text-center" style=""> Alfred Daniel Bisso </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 " >
+                        <div class="col-md-12 w3-card-8" style="height: 400px;">
+                            <div class="col-md-12" style="border: 4px #cc050a solid; padding: 0; height: 250px">
+                                <img class="img-" src="images/DTN - Ndeby Mbock Jean Calvin.jpg" alt="" / style="max-height: 200px; width: 100%;">
+                            </div>
+                            <div class="titre col-md-12" style="color: #000000; ">
+                                <div class="col-md-11 div-center" style="background: #faee4c; text-align: center; padding-top: 2px; padding-bottom: 2px">
+                                    DTN <BR>
+                                </div>
+                            </div>
+                        <div class="col-md-12 size20 text-center" style=""> Ndeby Mbock Jean Calvin  </div>
+                        </div>
+                    </div>
+                    -->
+                    
+                </div> 
+                <div class="col-md-12 line2"></div>
+            </div>
+            <p id="bottom"></p>
+            <div id="details" class="row w3-padding-jumbo" style="height: auto; min-height: 400px; background: rgba(255, 255, 0, 0.3)">
+                <div class="w3-xlarge w3-bottombar w3-margin-bottom text-center">Historiques / Details</div>
+                <div ng-click="gotoTop()" class="w3-circle w3-white w3-padding w3-btn" title="remonter" style="position: absolute; right: 22px; bottom: 32px; width: auto; height: auto;">
+                    <span class="fa fa-arrow-up"></span>
+                </div>
+                <br><br>
+                <div hidden class="w3-jumbo text-muted"> blank</div>
+                <div class="col-md-8  w3-border-right">
+                    <h4>Infos</h4>
+                    <div ng-show="bossDetail.nom" class="w3-jumbo text-muted"> Nom : {{bossDetail.nom}}</div>
+                    <div ng-show="bossDetail.prenom" class="w3-jumbo text-muted"> Prenom : {{bossDetail.prenom}}</div>
+                    <div ng-show="bossDetail.poste.nom_p" class="w3-jumbo text-muted"> Poste : {{bossDetail.poste.nom_p}}</div>
+                    <div ng-show="bossDetail.poste.departement.nom_dep" class="w3-jumbo text-muted"> Staff : {{bossDetail.poste.departement.nom_dep}}</div>
+                </div>
+                <div class="col-md-4 ">
+                    <h4 class="w3-border-bottom">Palmares</h4>
+                </div>
+            </div>
+        </div>       
+    

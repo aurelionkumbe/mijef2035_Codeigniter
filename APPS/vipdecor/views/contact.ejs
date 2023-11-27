@@ -1,0 +1,61 @@
+
+<!-- banner -->
+	<div class="banner-1">
+
+	</div>
+<!-- banner -->
+<div class="contact">
+	<div class="container">
+			<div class="contact-form">
+				<div class="col-md-8 contact-grid">
+					<form name="mailForm">
+
+						<div ng-messages="mailForm.$error" style="color:maroon" role="alert">
+						 <div ng-message="required">You did not enter a field</div>
+						 <div ng-message="minlength">Your field is too short</div>
+						 <div ng-message="maxlength">Your field is too long</div>
+					 </div>
+
+						<input ng-model="mail.nom" name="nom" minlength="12" maxlength="120" required type="text" placeholder="Nom">
+						<input ng-model="mail.email" name="email" type="text" placeholder="Email">
+						<input ng-model="mail.sujet" name="sujet" type="text" placeholder="Sujet">
+						<select ng-model="mail.objet" name="objet" class="form-control">
+							<option>-- Objet --></option>
+							<option>Decoration</option>
+							<option>Location</option>
+						</select>
+						<textarea ng-model="mail.message" name="message" placeholder="Message" required=""></textarea>
+						<div class="send">
+							<input  ng-click="sendMail()" type="button"  value="Envoyer">
+						</div>
+					</form>
+				</div>
+				<div class="col-md-4 contact-in">
+						<h3>Restez a proximite</h3>
+						<p>Nous sommes des <b style="position: relative; top: -2px">professionnels</b> de la decoration depuis <b style="position: relative; top: -2px"><span id="anneeExp"></span> ans</b>, dans les mariage, les dottes, les deuils, les ceremonies d'attestations,les cocktail et toutes autres sortes de receptions.</p>
+						<div class="address-grid">
+							<h5>Adresse</h5>
+							<p>Situe au dernier poteaux<br>
+							a Ekie, entree piramide</p>
+							<p><b>Service toujours joignable 24h/7 au</b><br>
+							<abbr title="telephone">Tel :</abbr> (+237) 699-988-240 <br>/ (+237) 671-180-244</p>
+							<a href="mailto:vipdecor@gmail.com">vipdecor@gmail.com</a>
+
+				      </div>
+				</div>
+				<script>
+					var thisYear = (new Date()).getFullYear();
+					$('#anneeExp').text(thisYear - 2010);
+				</script>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="map">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d424396.3176723366!2d150.92243255000002!3d-33.7969235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b129838f39a743f%3A0x3017d681632a850!2sSydney+NSW%2C+Australia!5e0!3m2!1sen!2sin!4v1441370341410" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+			</div>
+		</div>
+	</div>
+<!-- footer-->
+	<div neaa-include="footer.inc.html"></div>
+<!-- footer-->
+</body>
+</html>

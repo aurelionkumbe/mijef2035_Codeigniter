@@ -1,0 +1,49 @@
+	 <!-- header-bottom -->
+	 <div class="header">
+		<div class="header-top" ng-class="{'bg-orange':isAdminLoggedIn}">
+			<div class="container">
+				<div class="logo">
+
+					<h1><a href="index.html">
+						<img src="favicon.png" alt=""style="height: 80px; width:auto; display:inline-block"/>
+						VIP DECOR</a></h1>
+				</div>
+				<div class="reserv">
+					<a id="btn-master" href="#/register" ng-if="!(isAdminLoggedIn)">Commander</a>
+					<a id="btn-logout" href="javascript:void(0)" ng-click="logout()" ng-if="isAdminLoggedIn">Deconnexion</a>
+				</div>
+					<div class="clearfix"></div>
+
+			</div>
+		</div>
+		<div class="container">
+		<div class="header-bottom">
+		<!-- menu -->
+<nav class="navbar navbar-default" role="navigation">
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			<span class="sr-only">Menu</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+	</div>
+	<!--/.navbar-header-->
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<ul class="nav navbar-nav">
+			<li><a href="#/">Acceuil</a></li>
+			<li><a href="#/decoration">Decorations</a></li>
+			 <li><a href="#/materiel" >Materiel en location</a></li>
+			<li><a href="#/photo" >Album Photo</a></li>
+			<li ng-if="!(isAdminLoggedIn)"><a href="#/contact">Contact</a></li>
+			<li class="hide" ng-if="isAdminLoggedIn"><a href="#/reservation">Reservation</a></li>
+		</ul>
+	</div>
+	<!--/.navbar-collapse-->
+</nav>
+		<!-- menu end -->
+
+		</div>
+		</div>
+	</div>
+	<!-- /header-bottom -->

@@ -1,0 +1,557 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TASKMAN - UserSpace</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="" />
+<meta name="author" content="http://bootstraptaste.com" />
+<!-- css -->
+<link href="<?= base_url('css/bootstrap.min.css')?>" rel="stylesheet" />
+<link href="<?= base_url('css/w3.css')?>" rel="stylesheet">
+<link href="<?= base_url('css/w3-theme-blue.css')?>" rel="stylesheet">
+<link href="<?= base_url('css/font-awesome.min.css')?>" rel="stylesheet">
+<link href="<?= base_url('css/fancybox/jquery.fancybox.css')?>" rel="stylesheet">
+<link href="<?= base_url('css/jcarousel.css')?>" rel="stylesheet">
+<link href="<?= base_url('css/flexslider.css')?>" rel="stylesheet">
+<link href="<?= base_url('css/lobibox/lobibox.css')?>" rel="stylesheet">
+<link href="<?= base_url('js/select2/css/select2.min.css')?>" rel="stylesheet">
+<link href="<?= base_url('js/select2/css/select2-bootstrap.min.css')?>" rel="stylesheet">
+<link href="<?= base_url('js/bootstrap-datepicker/bootstrap-datetimepicker.css')?>" rel="stylesheet">
+
+
+<link href="<?= base_url('css/style.css')?>" rel="stylesheet">
+
+<!-- Theme skin -->
+<link href="<?= base_url('skins/default.css')?>" rel="stylesheet">
+
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+<body ng-app="TASKMAN">
+<div id="wrapper">
+	<!-- start header -->
+	<header>
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><span>T</span>ASKMAN</a>
+                </div>
+                <div class="navbar-collapse collapse ">
+                    <ul class="nav navbar-nav" style="margin-right: 35px;">
+                        <li><a href="<?=site_url('user')?>">Home</a></li>
+                        <?php if ($user->is_admin): ?>
+                        	<li><a href="<?=site_url('user/rapports')?>">LISTE DES RAPPORTS</a></li>
+                       	<?php else: ?>
+                        	<li><a href="<?=site_url('user/rapports')?>">MES RAPPORTS</a></li>
+                        <?php endif ?>
+
+                        <li class="dropdown active">
+                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false"><span class="w3-text-theme w3-large">MOI</span><b class=" icon-angle-down"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" class="w3-center"><i class="fa  fa-user fa-4x"></i></a></li>
+                                <li><a href="#" class="w3-center"><?php echo $user->nom_pers ?></a></li>
+                                <li><a href="<?=site_url('user/profil')?>">Parametres</a></li>
+                                <li class="divider"></li>
+
+								<li><a class="btn btn-primary" href="<?=site_url('user/logout')?>"><i class="fa fa-signout"></i> Deconnection</a></li>
+                            </ul>
+                        </li>
+                        <!--
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+	</header>
+	<!-- end header -->
+	<section id="inner-headline hidden-print">
+	<div class="container hide">
+		<div class="row">
+			<div class="col-lg-12">
+				<ul class="breadcrumb">
+					<li><a href="#"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
+					<li><a href="#">Rapport</a><i class="icon-angle-right"></i></li>
+					<li class="active">Print</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	</section>
+	<section id="content">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8">
+			<div class="w3-row w3-card-2 w3-padding">
+				<div class="col1">
+					
+				<h4>Rapport du <?php echo $rapport->date_rap?> 
+                <button class="w3-btn w3-right" id="postRapport" onclick="window.print()"><i class="fa fa-print"></i> Imprimer</button></h4>
+				</div>
+
+			</div>
+            <div class="col-md-12">
+    <div id="rapport-to-print" class="bg-white"
+         style="min-width: 21cm; min-height: 29.7cm; height: auto; padding: 0 64px;">
+        <p class="hidden-print">&nbsp;</p>
+        <h4 style="padding: 0; margin: 0; position: relative; top: -12px;">
+            <small><span class="pull-left">Effectué le <?= date('d/m/Y') ?></span> <span
+                    class="pull-right text-capitalize">Pour <?= $_SESSION['user']->nom_pers . ' ' . $_SESSION['user']->prenom ?></span>
+            </small>
+        </h4>
+
+        <p><h4 class="fg-brown"><b>1. Objet</b></h4>
+        <span><?= isset($rapport->objet) ? $rapport->objet: '' ?></span>
+        </p>
+
+        <p><h4 class="fg-brown"><b>2. Travaux realisés</b></h4>
+        <?php if (isset($travaux)): ?>
+            <?php foreach ($travaux as $t): ?>
+                <div style="border-bottom:dotted 1px #ddddbb;">
+                    <b><?= $t->nom_trav ?></b><br>
+                    <small class="text-muted"> éffectué de <?= $t->hd_trav?> à <?= $t->hf_trav ?>, supervise
+                    <br>
+                </div>
+            <?php endforeach ?>
+        <?php endif ?>
+        </p>
+       
+        <p><h4 class="fg-brown"><b>4. Actions menées</b></h4>
+        <div>
+            <?php if (isset($actions)): ?>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th style="width: 40%;">Intitulé</th>
+                        <th style="width: 20%;">Echéance
+                            <small class="text-muted">(minutes)</small>
+                        </th>
+                        <th style="width: 40%;">Assigné à</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($actions as $a): ?>
+                        <tr>
+                            <td><?= $a->nom_act ?></td>
+                            <td><?= $a->echeance ?></td>
+                            <td hidden="">nom du concerne</td>
+                        </tr>
+                    <?php endforeach ?>
+                    </tbody>
+                </table>
+            <?php endif ?>
+        </div>
+        </p>
+        <h4 style="border-top: solid 1px black; padding-top: 2px" class="text-center text-muted">
+            <small>
+                <span class="pull-left">&nbsp;&nbsp;&nbsp;Imprimé le <?= date('d/m/Y') ?></span>
+                <span
+                    class="pull-right">Imprime par <?= $_SESSION['user']->nom_pers .' '. $_SESSION['user']->prenom ?>
+                    &nbsp;&nbsp;&nbsp;</span>
+            </small>
+        </h4>
+        <p class="hidden-print">&nbsp;</p>
+        <p class="hidden-print">&nbsp;</p>
+    </div>
+</div>
+
+						<ul class="nav nav-tabs">
+							<li class="active"><a data-toggle="tab" href="#one"><i class="icon-briefcase"></i> aujourd' hui</a></li>
+							<li class=""><a data-toggle="tab" href="#two">Liste des travaux déja realisés</a></li>
+							<li class=""><a data-toggle="tab" href="#three">liste des taches programmées</a></li>
+						</ul>
+						<div class="tab-content">
+							<div id="one" class="tab-pane active">
+								<?php include 'forms/edit_rapport_form.php'; ?>
+							</div>
+							<div id="two" class="tab-pane">
+								<div class="row">
+									<div class="col-lg-12">
+										<button class="btn btn-primary btn-block"
+										onclick="document.getElementById('id01').style.display='block'"
+										>Ajouter</button>
+									</div>
+								</div>
+								<div class="clearfix w3-margin">
+									<?php foreach ($travaux as $key => $trav): ?>
+										<div class="w3-container w3-theme">
+										 <a href="#" title="supprimé" onclick="this.parentElement.style.display='none'" class="w3-text-red w3-closebtn"><i class="fa fa-trash"></i></a> 
+									  <h3><?php echo $trav->nom_trav ?></h3>
+									  <p>debuté a <?php echo $trav->hd_trav ?></p>
+									</div>  
+									<?php endforeach ?>
+								</div>
+							</div>
+							<div id="three" class="tab-pane">
+								<div class="row">	
+									<div class="col-lg-12">
+										<button class="btn btn-primary btn-block"
+										onclick="document.getElementById('id02').style.display='block'"
+										>Ajouter</button>
+									</div>
+								</div>
+								<div>
+									<?php foreach ($actions as $key => $act): ?>
+										<div class="w3-container w3-theme">
+										 <a href="#" title="supprimé" onclick="this.parentElement.style.display='none'" class="w3-closebtn w3-text-red"><i class="fa fa-trash"></i></a> 
+									  <h3><?php echo $act->nom_act ?></h3>
+									  <p>écheance <?php echo $act->echeance ?></p>
+									</div>  
+									<?php endforeach ?>
+								</div>
+								</p>
+							</div>
+						</div>
+					</div>
+			<div hidden="" class="col-lg-4">
+				<aside class="right-sidebar">
+				<div class="widget">
+					<form class="form-search">
+						<input type="text" placeholder="Search.." class="form-control">
+					</form>
+				</div>
+				<div hidden="" class="widget">
+					<h5 class="widgetheading">Categories</h5>
+					<ul class="cat">
+						<li><i class="icon-angle-right"></i><a href="#">Web design</a><span> (20)</span></li>
+					</ul>
+				</div>
+				<div class="widget">
+					<div class="w3-accordion w3-light-grey">
+  <button onclick="myFunction('Demo1')" class="w3-btn-block w3-left-align">
+    <i class="fa fa-users"></i> Ajouter une personne
+  </button>
+  <div id="Demo1" class="w3-accordion-content w3-container">
+    <form action="" method="post" class="form form-horizontal">
+    	<div class="form-group">
+    		<input class="form-control" type="text" name="user[nom_pers]" placeholder="nom" required="">
+    		<input class="form-control" type="text" name="user[prenom]" placeholder="prenom">
+    		<input class="form-control" type="text" name="user[email]" placeholder="Email">
+    		<input class="form-control" type="text" name="user[tel_pers]" placeholder="Telephone" required="">
+
+			<div class="input-group">
+				<input type="text" name="user[pass]" placeholder="mot de passe" required="">
+				<span class="input-group-btn"><button type="button" title="generer auto"><i class="fa fa-refresh"></i></button></span>
+			</div>
+			<div class="input-group">
+				<label for="fonction-list" class="input-group-addon">Fonction &nbsp;</label>
+	    		<select data-toggle="select"  class="form-control" name="user[fonction_id]" id="fonction-list" required="">
+	    			<option class="w3-theme" value="" >Choisir une fonction</option>
+	    			<?php if (isset($fonctions) && !empty($fonctions)): ?>
+	    				<?php foreach ($fonctions as $f): ?>
+	    					<option title="<?php echo $f->desc_fonc ?>" value="<?php echo $f->id_fonc ?>"><?php echo $f->nom_fonc ?></option>
+	    				<?php endforeach ?>
+	    			<?php else: ?>
+						<option>Aucune fonction enregistrée</option>
+	    			<?php endif ?>
+	    		</select>
+				<span class="input-group-btn"><button type="button" title="Nouvelle fonction"
+				onclick="document.getElementById('id03').style.display='block'"
+				><i class="fa fa-plus"></i></button></span>
+			</div>
+			<div class="input-group checkbox">
+				<label for="is-admin-ckb"><input class="checkbox" type="checkbox" name="user[is_admin]" id="is-admin-ckb" value="1" > Est un admin ?</label>
+			</div>	<br>
+			<div class="input-group">
+    			<input type="submit" class="btn btn-primary w3-right" name="postUser" value="Enregister">
+    		</div>
+
+
+    	</div>
+    </form>
+  </div>
+  <button onclick="myFunction('Demo2')" class="w3-btn-block w3-left-align">
+     Ajouter un super admin
+  </button>
+  <div id="Demo2" class="w3-accordion-content w3-container">
+    <p>Some text..</p>
+  </div>
+</div>
+				</div>
+				<div class="widget">
+					<h5 class="widgetheading">Anciennes taches non résolues</h5>
+					<ul class="recent">
+						<li>
+						<img alt="" class="pull-left" src="img/dummies/blog/65x65/thumb1.jpg">
+						<h6><a href="#">Lorem ipsum dolor sit</a></h6>
+						<p>
+							 Mazim alienum appellantur eu cu ullum officiis pro pri
+						</p>
+						</li>
+					</ul>
+				</div>
+				<div hidden="" class="widget">
+					<h5 class="widgetheading">Popular tags</h5>
+					<ul class="tags">
+						<li><a href="#">Web design</a></li>
+					</ul>
+				</div>
+				</aside>
+			</div>
+		</div>
+	</div>
+	</section>
+</div>
+<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+
+
+<!-- The Modal nouvell fonction -->
+<div id="id03" class="w3-modal">
+  <div class="w3-modal-content">
+    <div class="w3-container"><br>
+      <span onclick="document.getElementById('id03').style.display='none'"
+      class="w3-closebtn">&times;</span>
+          	<h4>Inserer nouvelle fonction</h4>
+    <form  name="send-travail" class="validateform form form-inline" method="post" action="" id="contactform">
+    <input type="hidden" name="rapport[num]" value="<?=$rapport->num?>">
+        <div class="row">
+            <div class="col-lg-4 field">
+                <input type="text" data-msg="Please enter at least 25 chars" data-rule="maxlen:25" placeholder="* nom" name="fonction[nom_fonc]">
+                <div class="validation">
+            	</div>
+            </div>
+            <div class="col-lg-7 field">
+                <input type="text" data-msg="Please enter at least 255 chars" data-rule="maxlen:255" placeholder="description" name="fonction[desc_fonc]">
+                <div class="validation">
+                </div>
+            </div>
+            <button class="w3-btn" type="submit" name="postFonction">Inserer</button>
+        </div>
+	</form>
+</div>
+  </div>
+</div>
+<!-- The Modal nouveau travail-->
+<div id="id01" class="w3-modal">
+  <div class="w3-modal-content">
+    <div class="w3-container"><br>
+      <span onclick="document.getElementById('id01').style.display='none'"
+      class="w3-closebtn">&times;</span>
+      <h4>Inserer nouvelle tache déja realisée</h4>
+    <form  name="send-travail" class="validateform form form-inline" method="post" action="" id="workform">
+    <input type="hidden" name="travail[rapport_num]" value="<?=$rapport->num?>">
+        <div id="sendmessage">
+             le travail a été enregistrer
+        </div>
+        <div class="row">
+			<div class="col-lg-4 field">
+                    <input type="text" placeholder="* nom de la tache" name="travail[nom_trav]">
+                    <div class="validation">
+                    </div>
+                </div>
+            	<div class="col-lg-4 field">
+                    <input type="text" data-toggle="time" placeholder="* heure de debut" name="travail[hd_trav]" value="<?php echo $rapport->hd_rap?>" >
+                    <div class="validation">
+                    </div>
+                </div>   
+            	<div class="col-lg-4 field">
+                    <input type="text" data-toggle="time" value="<?php echo $rapport->hf_rap?>" placeholder=" heure de fin" name="travail[hf_trav]">
+                    <div class="validation">
+                    </div>
+                </div>     
+            </div>
+            <div class="row">      	
+                <div class="col-lg-4 field">
+                	<label for="superviseur">Superviseur </label>
+                	<?php if (isset($personnes)): ?>
+                		<?php foreach ($personnes as $key => $pers): ?>
+                			<select name="travail[sup_id]" class="form-control" id="superviseur">
+		                		<option value="<?php $pers->id_pers ?>"><?php echo $pers->nom_pers ?></option>
+		                	</select>
+		                    <div class="validation">
+		                    </div>
+                		<?php endforeach ?>
+                	<?php endif ?>
+                </div>  
+            <button class="w3-btn pull-rigth" name="postTravail" type="submit" >Inserer au rapport</button>
+        </div>
+	</form>
+</div>
+  </div>
+</div>
+<!-- The Modal nouvelle tache todo -->
+<div id="id02" class="w3-modal">
+  <div class="w3-modal-content">
+    <div class="w3-container"><br>
+      <span onclick="document.getElementById('id02').style.display='none'"
+      class="w3-closebtn">&times;</span>
+      <h4>Inserer nouvelle tache a realisée</h4>
+        <form  name="send-action" class="validateform form form-inline" method="post" action="" id="todoform">
+        <input type="hidden" name="action[rapport_num]" value="<?=$rapport->num?>">
+            <div id="sendmessage">
+                 le todo a été enregistrer
+            </div>
+            <div class="row">
+                <div class="col-lg-4 field">
+                    <input type="text" placeholder="* nom de la tache" name="action[nom_act]">
+                    <div class="validation">
+                    </div>
+                </div>
+            	<div class="col-lg-4 field">
+                    <input type="text" data-toggle="date" placeholder="* echeance" name="action[echeance]">
+                    <div class="validation">
+                    </div>
+                </div>            	
+                <div class="col-lg-4 field">
+                	<label for="ass1-list">Assistant n*1 </label>
+                	<select name="action[ass1_id]" class="form-control" id="ass1-list">
+	                	<?php if (isset($personnes)): ?>
+	                		<?php foreach ($personnes as $pers): ?>
+			                		<option value="<?php $pers->id_pers ?>"><?php echo $pers->nom_pers ?></option>
+	                		<?php endforeach ?>
+	                	<?php endif ?>
+                	</select>
+                    <div class="validation">
+                    </div>
+                </div>  
+                <div class="col-lg-4 field">
+                	<label for="ass2-list" >Assistant n*2 </label>
+					<select class="form-control" name="action[ass2_id]" id="ass2-list">
+	                	<?php if (isset($personnes)): ?>
+	                		<?php foreach ($personnes as $pers): ?>
+			                		<option value="<?php $pers->id_pers ?>"><?php echo $pers->nom_pers ?></option>
+	                		<?php endforeach ?>
+	                	<?php endif ?>
+		            </select>
+                    <div class="validation">
+                    </div>
+                </div>            	<br>
+				<div class="clearfix"><button name="postAction" type="submit" class="w3-btn pull-left">Inserer au rapport</button></div>
+            </div>
+		</form>
+    </div>
+  </div>
+</div>
+<!-- javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="<?=base_url('js/jquery.js')?>"></script>
+<script src="<?=base_url('js/jquery.easing.1.3.js')?>"></script>
+<script src="<?=base_url('js/bootstrap.min.js')?>"></script>
+<script src="<?=base_url('js/jquery.fancybox.pack.js')?>"></script>
+<script src="<?=base_url('js/jquery.fancybox-media.js')?>"></script>
+<script src="<?=base_url('js/google-code-prettify/prettify.js')?>"></script>
+<script src="<?=base_url('js/portfolio/jquery.quicksand.js')?>"></script>
+<script src="<?=base_url('js/jquery.flexslider.js')?>"></script>
+<script src="<?=base_url('js/custom.js')?>"></script>
+<script src="<?=base_url('js/animate.js')?>"></script>
+<script src="<?=base_url('js/tinymce/tinymce.min.js')?>"></script>
+<script src="<?=base_url('js/lobibox/js/lobibox.min.js')?>"></script>
+<script src="<?=base_url('js/select2/js/select2.min.js')?>"></script>
+<script src="<?=base_url('js/bootstrap-datepicker/bootstrap-datetimepicker.js')?>"></script>
+
+
+<script>
+    $(document).ready(function () {
+//----------------------------------------------------------------------------------------------------------
+        tinymce.init({
+            selector: '#textarea',
+            elementpath: false,
+            plugins: 'autolink image',
+            //toolbar: 'undo redo | styleselect | bold italic | link image',
+            //menubar: false,
+            resize: false,
+            images_upload_base_path: 'images/test/'
+        });
+
+//------------------------------LOBIBOX---------------------------------------------
+
+<?php if (isset($_SESSION['alert'])): ?>
+            Lobibox.notify('<?= $_SESSION['alert']['type'] ?>', {
+                msg: "<?= $_SESSION['alert']['msg'] ?>"
+            });
+<?php endif; ?>
+<?php if (isset($_SESSION['error'])): ?>
+            Lobibox.notify('error', {
+                msg: "<?= $_SESSION['error'] ?>"
+            });
+<?php endif; ?>
+<?php if (isset($_SESSION['success'])): ?>
+            Lobibox.notify('success', {
+                msg: "<?= $_SESSION['success'] ?>"
+            });
+<?php endif; ?>
+
+//------------------------------SELECT 2---------------------------------------------
+		
+	
+    	 $('[data-toggle="select"]').select2({
+            theme: "bootstrap",
+            placeholder: "choix multiple",
+            //maximumSelectionSize: 6,
+        });
+//------------------------------DATETIME----------------------------------------------
+	    $('[data-toggle="datetime"]').datetimepicker({
+	        format: 'YYYY-MM-DD hh:mm:ss',
+	    });
+		$('[data-toggle="time"]').datetimepicker({
+		    format: 'hh:mm:ss',
+		});
+		$('[data-toggle="date"]').datetimepicker({
+        	format: 'YYYY-MM-DD',
+ 	   	});
+ 	   	/*
+		$('body').on('click', '[data-toggle="jconfirm"]', function (e) {
+	        e.preventDefault();
+	        $(this).jConfirm({
+	            message: 'Supprimer vraiment?',
+	            confirm: 'OUI',
+	            cancel: 'NON!',
+	            openNow: this,
+	            callback: function (elem) {
+	                console.log('confirm callback in action');
+	                document.location.href = $(elem).attr('href');
+	            }
+	        });
+	    });
+	     $('[data-toggle="table"]').DataTable();
+	     */
+//---------------------------------------------------------------------------
+		$('#postRapport').click(function(e) {
+			e.preventDefault();
+			$('form#rapport-form').submit();
+		});
+
+        setTimeout(function () {
+            $('.alert').fadeOut();
+        }, 3000);
+
+
+    });
+    //KqzT0091Hejp
+</script>
+
+<!-- w3 accordion -->
+<script>
+function myFunction(id) {
+    document.getElementById(id).classList.toggle("w3-show");
+}
+</script>
+
+<!-- javascript AngularJS 1.4.5
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<!--
+<script src="<?=base_url('js/angular.min.js')?>"></script>
+<script src="<?=base_url('app/app.js')?>"></script>
+-->
+<?php
+unset($_SESSION['error']);
+unset($_SESSION['success']);
+unset($_SESSION['alert']);
+?>
+</body>
+</html>

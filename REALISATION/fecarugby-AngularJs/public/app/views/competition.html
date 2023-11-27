@@ -1,0 +1,111 @@
+<div class="container w3-card-4" style="background-color: rgba(231, 236, 239, 0.7); border: 5px #daadb2 solid; border-top: 3px solid #DDE5E9; padding-top: 16px !important;">
+    <div class="col-md-12" style="text-align: center;">
+        <span style="color: green;font-size:20px;">Compétitions / Différentes Competitions / Calendriers</span>
+    </div>
+    <div class="text-center col-md-6 col-md-offset-3 w3-padding" style="background:#e58084;color: white;">
+        <div class="input-group">
+            <span class="input-group-btn"><button class="btn btn-default"><span class="fa fa-chevron-left"></span></button></span>
+            <select style="border: none; color: #e58084; background-color: #E0BEC2; font-size: 16px; font-weight: bolder;" name="competition" class="form-control text-center w3-small" ng-change="getCompetitionWithMatchs(selectedCompetition)" ng-model="selectedCompetition" id="competition-selected">
+                <option value=""> [[ choisir ]]</option>
+                <optgroup class="w3-border w3-yellow" label="Competitions">
+                    <option class="text-left w3-medium" style="padding:2px 22px; margin:2px 0; " ng-repeat="c in competitions | orderBy: '-niveau'" value="{{c.id}}">{{c.nom_c}}
+                </option>
+                </optgroup>    
+            </select>
+            <span class="input-group-btn"><button class="btn btn-default"><span class="fa fa-chevron-right"></span></button></span>
+        </div>
+        <!--
+        <h5>Championnat National de rugby à Rugby à XV Masculin</h5>
+        -->
+    </div>
+    <p class="row">&nbsp;</p>
+    <p class="row">&nbsp;</p>
+
+    <div class="row w3-padding">
+            <div class="col-md-4" style="border-radius: 5px; border: 1px #0e9e21 solid;">
+        <h4 style="color:#cc050c; text-align: center">Calendrier 2015-2016</h4>
+        <table class="table">
+            <tbody class="w3-small">
+                <tr>
+                    <td>10/03/2015</td>
+                    <td style="text-align: right; padding-right: 15px"> <b >Ajass </b><br>14
+
+                    </td>
+                    <td style="width: 10px">#</td>
+                    <td>
+                        Coton <br>4
+                    </td>
+                </tr>
+                <tr>
+                    <td>10/03/2015</td>
+                    <td style="text-align: right; padding-right: 15px"> <b >UNION </b><br>14
+
+                    </td>
+                    <td style="width: 10px">#</td>
+                    <td>
+                        CANON <br>4
+                    </td>
+
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+    <div class="col-md-4">
+
+        <h4 style="color: #cc050c;">Programme hebdomadaire des matchs</h4>
+        <div class="col-md-12">
+            <table class="table table-responsive">
+                    <thead>
+                        <th>N°</th>
+                        <th>Equipes</th>
+                        <th class="text-right">date</th>
+                    </thead>
+                    <tbody class="w3-small">
+                        <tr  ng-repeat=" match in matchsHebdo">
+                            <td>{{nbreMatch}}</td>
+                            <td>{{match.equipea_domicile.nom}} # {{match.equipea_exterieur.nom}}</td>
+                            <td class="text-center" style="background: green; width:10px; color:white !important;">{{match.DateM}}</td>
+                        </tr>
+                    <!--
+                        <tr>
+                            <td>2-</td>
+                            <td>Mercati</td>
+                            <td class="text-center" style="background: green; width:10px; color:white !important;">3pts</td>
+                        </tr>-->
+                    </tbody>
+                </table>
+        </div>
+    </div>
+    <div class=" col-md-4" >
+        <div class="text-center" style="color:#cc050c; font-weight: bolder; "><h4>Classements</h4>
+        </div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1" style="background:#fcf48f;border-radius: 8px;">
+                <table class="table table-responsive">
+                    <thead>
+                        <th>N°</th>
+                        <th>Equipe</th>
+                        <th class="text-right">points</th>
+                    </thead>
+                    <tbody class="w3-small">
+                        <tr ng-repeat="equipe in classement">
+                            <td>{{nbreEquipe}}</td>
+                            <td>{{equipe.nom}}</td>
+                            <td class="text-center" style="background: green; width:10px; color:white !important;">{{equipe.pivot.nbre_point}}</td>
+                        </tr>
+                        <!--
+                        <tr>
+                            <td>2-</td>
+                            <td>Mercati</td>
+                            <td class="text-center" style="background: green; width:10px; color:white !important;">3pts</td>
+                        </tr>-->
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+    </div>
+</div>

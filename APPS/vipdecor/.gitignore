@@ -1,0 +1,36 @@
+/dist
+/.tmp
+/.sass-cache
+/bower_components
+
+# Node build artifacts
+node_modules
+npm-debug.log
+
+# Local development
+*.env
+*.dev
+.DS_Store
+
+# Docker
+Dockerfile
+docker-compose.yml
+
+.DS_Store
+
+/bower_components/*
+/node_modules/*
+/public/videos/*
+/public/photos/*
+
+# IDE Files
+#-------------------------
+/nbproject/
+.idea/*
+
+## Sublime Text cache files
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project

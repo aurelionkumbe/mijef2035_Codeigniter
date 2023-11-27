@@ -1,0 +1,45 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 8 mai 2016, 23:48:18
+    Author     : aurelio
+*/
+
+.clickable{
+    cursor: pointer !important;
+}
+
+.no-padding{
+    padding: 0 !important;
+}
+.no-margin{
+    margin: 0 !important;
+}
+img.rotate-x {
+    -webkit-transform: rotateX(150deg); /* Safari */
+    transform: rotateX(150deg);
+} 
+img.rotate-y {
+    -webkit-transform: rotateY(150deg); /* Safari */
+    transform: rotateY(150deg);
+} 
+.w3-modal{
+    z-index: 1050 !important;
+    padding-top: 45px !important;
+}
+#jConfirm {
+    background: #113F66 none repeat scroll 0 0;
+    border: 2px solid #f3f3f3;
+    border-radius: 5px;
+    box-shadow: 4px 4px 13px #999;
+    color: #FFEFC1;
+    display: none;
+    font-weight: 700;
+    padding: 10px;
+    position: absolute;
+    text-align: center;
+    z-index: 999999;
+}

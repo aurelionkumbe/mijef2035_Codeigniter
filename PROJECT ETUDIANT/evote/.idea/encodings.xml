@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$/application/views/admin_index.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/views/author.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/views/home_electeur.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/views/home_infos.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/views/home_login.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/views/home_vote_all_winner.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/views/home_vote_winner.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/views/include/admin_candidat_membre.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/views/partial/header.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/views/partial/header_reset.php" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

@@ -1,0 +1,18 @@
+<!-- Slider -->
+        <div id="main-slider" class="flexslider col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <ul class="slides">
+                <?php 
+                    $sql = "SELECT * FROM photo WHERE vue = ? order by date_ph DESC";
+                    $query = $bdd->prepare($sql);
+                    $query->execute(array(1));
+
+                    $reponse = $query->fetchAll();
+                    foreach ($reponse as $rep) {                                                            
+                        echo '<li>
+                            <img src="image/'.$rep['photo'].'" alt="" />                
+                          </li>';
+                    }                            
+                ?>
+            </ul>
+        </div>
+        <!--end slider-->

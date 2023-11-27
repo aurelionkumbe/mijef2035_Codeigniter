@@ -1,0 +1,160 @@
+= Angular jqLite
+
+
+== jQuery and Angular
+
+Angular doesn't depend on jQuery. In fact, the Angular source contains an embedded 
+lightweight alternative: jqLite. Still, when Angular detects the presence of a jQuery 
+version in your page, it uses that full jQuery implementation in lieu of jqLite. 
+One direct way in which this manifests itself is with Angular's element abstraction. 
+For example, in a directive you get access to the element that the directive applies to:
+
+[source,javascript]
+----
+angular.module('jqdependency', [])
+  .directive('failswithoutjquery', function() {
+    return {
+      restrict : 'A',
+      link : function(scope, element, attrs) {
+               element.hide(4000)
+             }
+    }
+});
+----
+
+(see this example in action in http://plunker.co/edit/aqeDikqd6O2QaqH3eaIq?p=preview[this plunkr])
+
+but is this element a jqLite or jQuery element? It depends. The manual states:
+
+All element references in Angular are always wrapped with jQuery or jqLite; they are never raw DOM references.
+So it will be a jqLite element only if jQuery was not detected by Angular. The hide() method only exists for 
+jQuery elements, meaning this example only works when Angular uses jQuery. If you (accidentally) switch the 
+order of AngularJS and jQuery script tags in your page, this code breaks! Shuffling script tags around may 
+not happen very often, but it bit me when I started modularizing our codebase. Especially when you start 
+using a module loader (like RequireJS), this can rear it's ugly head. For http://requirejs.org/[RequireJS], 
+I solved it by explicitly declaring that Angular does in fact depend on JQuery in the
+http://requirejs.org/docs/api.html#config-shim[shim config].
+
+Another takeaway might be that you shouldn't call jQuery specific methods through Angular's element wrapper. 
+Instead you can use $(element).hide(4000) to make it abundantly clear that you do, in fact, depend on jQuery. 
+In that case, changing the script tag order won't break the directive.
+
+
+== Angular jqLite ==
+
+jqLite is a tiny, API-compatible subset of jQuery that allows Angular to manipulate the DOM in a cross-browser 
+compatible way. jqLite implements only the most commonly needed functionality with the goal of having a very 
+small footprint.
+
+`angular.element` is a function in module ng which wWraps a raw DOM element or HTML string as a jQuery element.
+
+To use jQuery, simply load it before DOMContentLoaded event fired.
+
+If jQuery is available, angular.element is an alias for the jQuery function. If jQuery is not available, 
+angular.element delegates to Angular's built-in subset of jQuery, called "jQuery lite" or "jqLite."
+
+
+Note: all element references in Angular are always wrapped with jQuery or jqLite; they are never 
+      raw DOM references.
+      
+== Angular's jqLite ==
+
+jqLite provides only the following jQuery methods:
+
+=== addClass() http://api.jquery.com/addclass/[] ===
+
+  Adds the specified class(es) to each of the set of matched elements
+  
+[source,javascript]
+----
+function jqLiteAddClass(element, cssClasses) {
+  if (cssClasses && element.setAttribute) {
+    var existingClasses = (' ' + (element.getAttribute('class') || '') + ' ')
+                            .replace(/[\n\t]/g, " ");
+
+    forEach(cssClasses.split(' '), function(cssClass) {
+      cssClass = trim(cssClass);
+      if (existingClasses.indexOf(' ' + cssClass + ' ') === -1) {
+        existingClasses += cssClass + ' ';
+      }
+    });
+
+    element.setAttribute('class', trim(existingClasses));
+  }
+}
+----
+
+- http://api.jquery.com/after/[after()]
+  Insert content, specified by the parameter, after each element in the set of matched elements.
+
+- http://api.jquery.com/append/[append()]
+  Insert content, specified by the parameter, to the end of each element in the set of matched elements.
+
+- http://api.jquery.com/after/[attr()]
+  Get the value of an attribute for the first element in the set of matched elements or set one or more 
+  attributes for every matched element.
+
+- bind() : http://api.jquery.com/bind/ - Does not support namespaces, selectors or eventData
+- children(): http://api.jquery.com/children/ - Does not support selectors
+- clone(): http://api.jquery.com/clone/
+- contents(): http://api.jquery.com/contents/
+- css(): http://api.jquery.com/css/
+- data(): http://api.jquery.com/data/
+- empty(): http://api.jquery.com/empty/
+- eq(): http://api.jquery.com/eq/
+- find(): http://api.jquery.com/find/ - Limited to lookups by tag name
+- hasClass(): http://api.jquery.com/hasClass/
+- html(): http://api.jquery.com/html/
+- next(): http://api.jquery.com/next/ - Does not support selectors
+- on(): http://api.jquery.com/on/ - Does not support namespaces, selectors or eventData
+- off(): http://api.jquery.com/off/ - Does not support namespaces or selectors
+- one(): http://api.jquery.com/one/ - Does not support namespaces or selectors
+- parent(): http://api.jquery.com/parent/ - Does not support selectors
+- prepend(): http://api.jquery.com/prepend/
+- prop(): http://api.jquery.com/prop/
+- ready(): http://api.jquery.com/ready/
+- remove(): http://api.jquery.com/remove/
+- removeAttr(): http://api.jquery.com/removeAttr/
+- removeClass(): http://api.jquery.com/removeClass/
+- removeData(): http://api.jquery.com/removeData/
+- replaceWith(): http://api.jquery.com/replaceWith/
+- text(): http://api.jquery.com/text/
+- toggleClass(): http://api.jquery.com/toggleClass/
+- triggerHandler(): http://api.jquery.com/triggerHandler/ - Passes a dummy event object to handlers.
+- unbind(): http://api.jquery.com/unbind/ - Does not support namespaces
+- val(): http://api.jquery.com/val/
+- wrap(): http://api.jquery.com/wrap/
+
+
+== jQuery/jqLite Extras ==
+
+Angular also provides the following additional methods and events to both jQuery and jqLite:
+
+=== Events ===
+
+$destroy - AngularJS intercepts all jqLite/jQuery's DOM destruction apis and fires this event on all DOM 
+nodes being removed. This can be used to clean up any 3rd party bindings to the DOM element before it is 
+removed.
+
+=== Methods ===
+
+- controller(name) - retrieves the controller of the current element or its parent. By default retrieves 
+controller associated with the ngController directive. If name is provided as camelCase directive name, 
+then the controller for this directive will be retrieved (e.g. 'ngModel').
+
+- injector() - retrieves the injector of the current element or its parent.
+
+- scope() - retrieves the scope of the current element or its parent.
+- isolateScope() - retrieves an isolate scope if one is attached directly to the current element. 
+  This getter should be used only on elements that contain a directive which starts a new isolate scope. 
+  Calling scope() on this element always returns the original non-isolate scope.
+- inheritedData() - same as data(), but walks up the DOM until a value is found or the top parent element 
+  is reached.
+  
+== Usage ==
+
+angular.element(element);
+
+Argument: element - HTML string or DOMElement to be wrapped into jQuery.  Its type is stringDOMElement. +
+Returns: Object - jQuery object. +
+
